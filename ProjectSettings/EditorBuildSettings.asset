@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Games/peg-tube-simulation_unity/Scene/Scenes/Sceneas/mainScene.unity
+    guid: af837f646eed21d4cb54c826ebb0ad80
+  - enabled: 1
+    path: Assets/Games/peg-tube-simulation_unity/Scene/Scenes/Sceneas/lightitingscene.unity
+    guid: 1750e23693233574bb599961b4896022
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d51b697b90889804da557404dd4e8166, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 12f8e0b90749db041a9976f08a104569, type: 2}

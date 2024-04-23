@@ -1,0 +1,17 @@
+{
+    "name": "gamehelper-procedural-image-editor",
+    "references": [
+        "gamehelper-procedural-image",
+        "gamehelper-asset-database-editor"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
