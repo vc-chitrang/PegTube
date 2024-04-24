@@ -16,10 +16,6 @@ public class Syringe : InteractableObjectBase {
         SetWaterFillAmount(0);    
     }
 
-    private void Update() {
-        SetWaterFillAmount(waterFillAmount);    
-    }
-
     internal void SetWaterFillAmount(float waterAmount) {
         if (waterAmount < _fillAmount) {
             return;
