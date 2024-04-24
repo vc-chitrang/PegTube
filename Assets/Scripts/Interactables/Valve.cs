@@ -29,6 +29,7 @@ public class Valve : InteractableObjectBase {
     }
 
     internal void CloseValve(bool isClosed) {
-        
+        float value = isClosed ? 0f : 100f;
+        _skinnedMeshRenderer.SetBlendShapeWeight(0,value);
     }
 }
