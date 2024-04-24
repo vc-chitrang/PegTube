@@ -1,0 +1,337 @@
+fileFormatVersion: 2
+guid: 52f6966fd3783e24189f9a9114e06137
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bed
+    second: {fileID: 2100000, guid: fb2edcce0c43d4144a664e17d349fd80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BrownBear Mat
+    second: {fileID: 2100000, guid: 96126b4ef4b004d458f4bdacc3580589, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Diaper
+    second: {fileID: 2100000, guid: 6c7a5d31037c93e4a92e86cfae989067, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Milk_Bottle
+    second: {fileID: 2100000, guid: 2a99ad0e9feb6714a9969ace60a54012, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Peg tube
+    second: {fileID: 2100000, guid: 2a6365f138def05449888c770f2032f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TV_Unit
+    second: {fileID: 2100000, guid: 65c856bdbaefd9e4885b9ace401efb6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Windows_Frame_&_Curtain
+    second: {fileID: 2100000, guid: 89835eafae78f1e4d8a004e27f7ea393, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wooden_Cycle
+    second: {fileID: 2100000, guid: 6da529b9b4441f149aa1b53a23bff205, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ceiling
+    second: {fileID: 2100000, guid: 3a47b11f2c9514a45b7556e88af24436, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: high-poly
+    second: {fileID: 2100000, guid: d66363e7bf52bc3478ebf4d674534750, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kid
+    second: {fileID: 2100000, guid: fa17592decb4aee4da795354a1f360c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: met
+    second: {fileID: 2100000, guid: cd3edd4c4ced60c4db6d6228f95b8706, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: syringe
+    second: {fileID: 2100000, guid: c629d9023af0bc54fa3d5a619b1a5a25, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: table
+    second: {fileID: 2100000, guid: 9c19b7a54b666c844b640a92bed9f013, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tray
+    second: {fileID: 2100000, guid: f94898e31d27974459dec74138b98712, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tv_Display
+    second: {fileID: 2100000, guid: 2a1db9bdcf8aa744693e66b05465fb42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall
+    second: {fileID: 2100000, guid: 03e0cd6cd4e1d6941b406e519d91cbc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: water
+    second: {fileID: 2100000, guid: 289cc480605e3de49b4cbd126c26f0ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: window glass
+    second: {fileID: 2100000, guid: 86f030d6a61ccd745a3bed411c096fb4, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bed_Metallic
+    second: {fileID: 2800000, guid: d791fc13bdcdbce469aec18c7936f905, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bed_Normal
+    second: {fileID: 2800000, guid: 6c295bdf97ddfc440a1292ed7c61faa8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bed_Roughness
+    second: {fileID: 2800000, guid: f5fa9a47433a17846a5d966c97f751ad, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Milk_Bottle Alpha
+    second: {fileID: 2800000, guid: cd2ae3fd10194ab4e9bc6927ae0678b4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Peg tube Base Color
+    second: {fileID: 2800000, guid: 1eaaffad2aead1b4c8f9d83bc7a83663, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Peg tube_opacity
+    second: {fileID: 2800000, guid: 5f9696909ae596845851b3d9df593881, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Syringe_Basecolor
+    second: {fileID: 2800000, guid: e284e85cdde7e0b43b0bf6eff60c823f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TV_Unit_Base_color
+    second: {fileID: 2800000, guid: 1a3fb244cc521534b83b5ef6fc1c8cfe, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TV_Unit_Metallic
+    second: {fileID: 2800000, guid: 1289a27baa633dd4e8e6043634393272, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TV_Unit_Normal_OpenGL
+    second: {fileID: 2800000, guid: e2a5035fc5ba17e45875e16ab4638e35, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TV_Unit_Roughness
+    second: {fileID: 2800000, guid: 11230142fded0f544b7aedb5c3e03ea1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TeddyBearColor
+    second: {fileID: 2800000, guid: 92d70f47ebd85574b9964947a2866516, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TeddyBearNormal
+    second: {fileID: 2800000, guid: 9a016e0948b66204086ba2338d8c989a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tray_fabric
+    second: {fileID: 2800000, guid: 723cd4d6410a7204dbf8e1592e4ceb25, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wooden_Cycle
+    second: {fileID: 2800000, guid: b151e68e448a47a4daf0e0a98c96aa97, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wooden_surface
+    second: {fileID: 2800000, guid: e30555bff3d26cf4c8bb50703cba03bc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: baby-diaper
+    second: {fileID: 2800000, guid: 57a0033d3a9da304f823f917184c42bc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: brown_eye
+    second: {fileID: 2800000, guid: 5a130b92197a8e040853ff346979a491, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: milk Bottle basecolor
+    second: {fileID: 2800000, guid: ff951d47b6bd0b34885964c0103c360a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: syringe_Alpha
+    second: {fileID: 2800000, guid: 34f282763c4167f4fb770597b03522ad, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tiles_0013_metallic_2k
+    second: {fileID: 2800000, guid: f3d86594ea31e3444b7b628a4933d51a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tiles_0013_normal_opengl_2k
+    second: {fileID: 2800000, guid: c22d4760a488ac84b8093389e6a12eaf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tiles_0013_roughness_2k
+    second: {fileID: 2800000, guid: cfa85ff3696fed04d8c3576b71d756e4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tray Metallic
+    second: {fileID: 2800000, guid: e07ea5b0a080b234d8194c287486f80c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tray Normal
+    second: {fileID: 2800000, guid: 86f11ce97ebb4864883290d5fc18cf43, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tray Roughness
+    second: {fileID: 2800000, guid: 0205da5c2c98bfb4aa6a77d13ba38978, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wall_Normal_OpenGL
+    second: {fileID: 2800000, guid: eb00ac3ddfe1dce41a4f96995c1c3772, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wall_Roughness
+    second: {fileID: 2800000, guid: 70fbd1d68c0dad84aa3678a680443f5c, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 128
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 65
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 2
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
