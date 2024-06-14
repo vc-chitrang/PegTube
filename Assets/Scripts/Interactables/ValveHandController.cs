@@ -20,7 +20,6 @@ public class ValveHandController : MonoBehaviour {
 
     public UnityEvent OnValveOpen;
     public UnityEvent OnValveClose;
-    //public float plug_open_threshold;
 
     // Start is called before the first frame update
     void Start() {

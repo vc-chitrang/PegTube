@@ -36,7 +36,6 @@ public class FlowController : MonoBehaviour {
 
         switch (currentTaskIndex) {
             case 0://Pick up Big Injection and Fill Water
-                //yield return StartCoroutine(WaitForInjectionFill());
                 yield return new WaitWhile(IsInjectionEmpty);
                 break;
             case 1://Close Clamp
@@ -78,7 +77,6 @@ public class FlowController : MonoBehaviour {
                 Debug.Log("No more tasks");
                 break;
         }
-        //yield return new WaitForSeconds(1);
         setTaskIndex(currentTaskIndex + 1);
 
     }
@@ -86,13 +84,9 @@ public class FlowController : MonoBehaviour {
     private void CheckFailTaskFlow() {
 
     }
-    //[ContextMenu("test")]
-    //public void test() {
-    //    Debug.Log("IsInjectionSnapped" + IsInjectionSnapped());
-    //}
+
     private bool IsInjectionSnapped() {
-        //return _syringeHandController.syringe.isSnaped;
-        return _snapInteractable_primary.State == InteractableState.Select || _snapInteractable_secondary.State == InteractableState.Select; //_snapInteractable_primary.Interactors.Count >  0 || _snapInteractable_secondary.Interactors.Count > 0;
+        return _snapInteractable_primary.State == InteractableState.Select || _snapInteractable_secondary.State == InteractableState.Select; 
     }
 
     private bool IsInjectionEmpty() {
@@ -102,10 +96,6 @@ public class FlowController : MonoBehaviour {
     private bool IsValveOpen() {
         return _valveHandController_primary.valveIsOpen || _valveHandController_secondary.valveIsOpen;
     }
-
-    //private bool IsAllValveClosed() {
-    //    return (!_valveHandController_primary.valveIsOpen) && (!_valveHandController_secondary.valveIsOpen);
-    //}
 
     private IEnumerator WaitForClampToggle(bool _isOpen) {
         if (_isOpen) {
@@ -151,7 +141,6 @@ public class FlowController : MonoBehaviour {
 
     public void OnClampOpen() {
         if ((_valveHandController_primary.valveIsOpen && _valveHandController_secondary.valveIsOpen) || (_valveHandController_primary.valveIsOpen && _snapInteractable_primary.State != InteractableState.Select) || (_valveHandController_secondary.valveIsOpen && _snapInteractable_secondary.State != InteractableState.Select)) {
-            //Debug.Log("Critical Mistake Restart Training ");
             ShowRestart();
         }
     }
@@ -160,10 +149,6 @@ public class FlowController : MonoBehaviour {
             Debug.Log("Critical Mistake Restart Training ");
             ShowRestart();
         }
-    }
-    public void test() {
-        //_snapInteractable_primary.O.
-
     }
 
     private void ShowRestart(string message = "Invalid Move! This can be critical to the patient!!\nRestart Training.") {
@@ -206,5 +191,4 @@ public class Task {
 
     public int TaskId;
     public string instruction;
-    public int failIndex;
 }

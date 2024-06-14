@@ -13,7 +13,6 @@ public class SyringeHandController : MonoBehaviour {
     float p1;
     float p2;
     float h;
-    // Start is called before the first frame update
     void Start() {
         syringeGrabTransformer = syringeHandleGrab.GetComponent<OneGrabTranslateTransformer>();
         p1 = syringeGrabTransformer.Constraints.MaxZ.Value;
@@ -21,7 +20,6 @@ public class SyringeHandController : MonoBehaviour {
         h = p2 - p1;
     }
 
-    // Update is called once per frame
     void Update() {
         UpdateSyringe();
     }
