@@ -11,8 +11,8 @@ public class ControllerInput : MonoBehaviour {
         }
 
         Vector2 thumbstickValue = rightThumbstick.action.ReadValue<Vector2>();
-        
+
         float _mappedValue = MathUtility.MapValue(Mathf.Abs(thumbstickValue.y), 0, 1, 0, 100f);
-        Syringe.SetWaterFillAmount(_mappedValue);
+        Syringe.FillWater(_mappedValue);
     }
 }

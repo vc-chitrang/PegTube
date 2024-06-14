@@ -34,5 +34,10 @@ public class Clump : InteractableObjectBase {
     internal void LockClump(bool isLocked) {
         _meshRenderer.material = isLocked ? _selectedMaterial : _defaultMaterial;
     }
+
+    public void SelectClumpWithHands() {
+        _isLocked = !_isLocked;
+        _meshRenderer.material = _isLocked ? _selectedMaterial : _defaultMaterial;
+    }
 }
 
