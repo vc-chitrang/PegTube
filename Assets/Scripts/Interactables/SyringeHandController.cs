@@ -50,8 +50,9 @@ public class SyringeHandController : MonoBehaviour {
 
     public void ResetSyringe() {
         Vector3 _resetpos = syringeGrabTransformer.transform.localPosition;
-        _resetpos.z = syringeGrabTransformer.Constraints.MinZ.Value;
+        _resetpos.z = syringeGrabTransformer.Constraints.MaxZ.Value;
         syringeGrabTransformer.transform.localPosition = _resetpos;
+        syringe.FillWater(0);
     }
    
 }

@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: tray
-  m_Shader: {fileID: -6465566751694194690, guid: 630569568cd42ba43b4ed1f307126e61, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 630569568cd42ba43b4ed1f307126e61,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -97,7 +98,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_6d77192f46f14fe5b2b49a84833b4798: -0.09
+    - Vector1_6d77192f46f14fe5b2b49a84833b4798: -0.3
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 2

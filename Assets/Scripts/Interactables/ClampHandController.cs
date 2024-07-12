@@ -14,16 +14,15 @@ public class ClampHandController : MonoBehaviour {
 
     public bool _isLocked = false;
     void Start() {
-        _isLocked = false;
-        LockClump(_isLocked);
+        LockClump(false);
     }
 
     internal void LockClump(bool isLocked) {
+        _isLocked = isLocked;
         _meshRenderer.material = isLocked ? _selectedMaterial : _defaultMaterial;
     }
     public void SelectClumpWithHands() {
-        _isLocked = !_isLocked;
-        LockClump(_isLocked);
+        LockClump(!_isLocked);
 
         if (_isLocked) {
             OnClampClose.Invoke();
@@ -31,5 +30,7 @@ public class ClampHandController : MonoBehaviour {
             OnClampOpen.Invoke();
         }
     }
+
+
 
 }
