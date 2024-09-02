@@ -13,23 +13,25 @@ public class Syringe : InteractableObjectBase {
     public float waterFillAmount = 0;
 
     private void Start() {
-        SetWaterFillAmount(0);    
+        FillWater(0);    
     }
 
-    private void Update() {
-        SetWaterFillAmount(waterFillAmount);    
-    }
-
-    internal void SetWaterFillAmount(float waterAmount) {
-        if (waterAmount < _fillAmount) {
-            return;
-        }
+    internal void FillWater(float waterAmount) {
+        //if (waterAmount < _fillAmount) {
+        //    return;
+        //}
         skinnedMeshRenderer.SetBlendShapeWeight(0, waterAmount);
-        _fillAmount = waterAmount;
+        waterFillAmount = waterAmount;
     }
 
-    internal bool IsNozzleDipInsideWaterCup() {
+    internal bool IsNozzleDipValid() {
         return _syringeNozzle.IsDeepedInotWater();
     }
-    
+    internal bool IsNozzleDipInsideWaterCup() {
+        return _syringeNozzle.IsFillEnabled();
+    }
+    internal bool IsNozzleDipInsidePEGTube() {
+        return _syringeNozzle.IsInjectEnabled();
+    }
+        
 }//Syringe class end.
