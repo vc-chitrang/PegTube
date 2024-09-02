@@ -11,7 +11,12 @@ using UnityEngine.Video;
 
 public class FlowController : MonoBehaviour {
     public int currentTaskIndex = 0;
+
+    public float welcomePeddingTime = 2f;
+    public float instroductionOfEquipemntTime = 2f;
+
     public List<Task> tasks = new List<Task>();
+    public List<GameObject> allEquipmentIntroductions = new List<GameObject>();
     public VideoClip restartVideoClip;
 
     [Header("UI")]
@@ -28,7 +33,16 @@ public class FlowController : MonoBehaviour {
     [SerializeField] private SnapInteractable _snapInteractable_secondary;
     public SerializedDictionary<string, QuickOutline> HighlightObjects;
     bool waterInjected = false;
+    bool WelcomePlayed = false;
     Coroutine currentTaskCoroutine;
+
+    public AudioSource instructionAudioSource;
+    public AudioClip trainingCompleteAudioClip;
+    public AudioClip invalidMoveAudioClip;
+
+    private const string TrainingCompleteMessage = "<b>Training Complete!</b>\nWould you like to try again?\r\n<size=.4>Remember, the PEG tube should ideally be flushed before and after administering medications, after feeding, and routinely every 4-6 hours if the tube is not in continuous use.</size>";
+
+    private const string InvalidMoveMessage = "<b>Invalid Action!</b>\r\nThis could jeopardize the patient's safety.\r\nPlease restart the training.";
 
     // Start is called before the first frame update
     void Start() {
@@ -43,55 +57,114 @@ public class FlowController : MonoBehaviour {
 
     public IEnumerator CheckCurrentTask() {
         RemoveAllHighlights();
-        foreach (string highlight in tasks[currentTaskIndex].highlightObjectKeys) {
-            AddHighlight(highlight);
+
+        if (tasks[currentTaskIndex].highlightObjectKeys.Count > 0) {
+            foreach (string highlight in tasks[currentTaskIndex].highlightObjectKeys) {
+                AddHighlight(highlight);
+            }
         }
-        PlayVideo(tasks[currentTaskIndex].demoVideoClip);
+        if (tasks[currentTaskIndex].demoVideoClip != null)
+            PlayVideo(tasks[currentTaskIndex].demoVideoClip);
+        else {
+            StopVideo();
+        }
+        if (tasks[currentTaskIndex].instructionAudioClip != null) {
+            PlayVoiceOverInstruction(tasks[currentTaskIndex].instructionAudioClip);
+        } else {
+            StopVoiceOverInstruction();
+        }
+        float paddingTime = 2;
 
         switch (currentTaskIndex) {
-            case 0://Pick up Big Injection and Fill Water
-                yield return new WaitWhile(IsInjectionEmpty);
+            case 0://welcome
+                if (!WelcomePlayed) {
+                    yield return new WaitWhile(IsAudioPlaying);// wait whlie audio playing
+                    yield return new WaitForSeconds(welcomePeddingTime);
+                    yield return new WaitForSeconds(paddingTime);
+                }
+                break;
+            case 1://Introduction To Equipments
+                if (!WelcomePlayed) {
+                    // enable Introductions 
+                    ToggleAllEquipmentIntrodutions(true);
+                    yield return new WaitWhile(IsAudioPlaying);// wait whlie audio playing
+                    yield return new WaitForSeconds(instroductionOfEquipemntTime);
+                    ToggleAllEquipmentIntrodutions(false);
+                    yield return new WaitForSeconds(paddingTime);
+
+                    WelcomePlayed = true;
+                }
+                break;
+            case 2://Pick up Big Injection and Fill Water
+                if (IsInjectionEmpty()) {
+                    yield return new WaitWhile(IsInjectionEmpty);
+                    yield return new WaitForSeconds(paddingTime);
+                }
                 break;
 
-            case 1://Close Clamp
+            case 3://Close Clamp
                 StartCoroutine(HandleFailCasesForInjection());
-                yield return StartCoroutine(WaitForClampToggle(false));
+                if (!isClampLocked()) {
+                    yield return StartCoroutine(WaitForClampToggle(false));
+                    yield return new WaitForSeconds(paddingTime);
+                }
                 break;
 
-            case 2://Open Valve
-                yield return new WaitUntil(IsValveOpen);
-
+            case 4://Open Valve
+                if (!IsValveOpen()) {
+                    yield return new WaitUntil(IsValveOpen);
+                    yield return new WaitForSeconds(paddingTime);
+                }
                 break;
 
-            case 3://Plug Filled Injection on Valve
-                yield return new WaitUntil(IsInjectionSnapped);
+            case 5://Plug Filled Injection on Valve
+                if (!IsInjectionSnapped()) {
+                    yield return new WaitUntil(IsInjectionSnapped);
+                    yield return new WaitForSeconds(paddingTime);
+                }
                 break;
 
-            case 4://Open Clamp 
-                yield return StartCoroutine(WaitForClampToggle(true));
+            case 6://Open Clamp 
+                if (isClampLocked()) {
+                    yield return StartCoroutine(WaitForClampToggle(true));
+                    yield return new WaitForSeconds(paddingTime);
+                }
                 break;
 
-            case 5://Inject Water
-                yield return new WaitUntil(IsInjectionEmpty);
+            case 7://Inject Water
+                if (!IsInjectionEmpty()) {
+                    yield return new WaitUntil(IsInjectionEmpty);
+                    yield return new WaitForSeconds(paddingTime);
+                }
                 waterInjected = true;
                 break;
 
-            case 6://close Clamp again 
-                yield return StartCoroutine(WaitForClampToggle(false));
+            case 8://close Clamp again 
+                if (!isClampLocked()) {
+                    yield return StartCoroutine(WaitForClampToggle(false));
+                    yield return new WaitForSeconds(paddingTime);
+                }
                 break;
 
-            case 7://remove Injection
-                yield return new WaitWhile(IsInjectionSnapped);
+            case 9://remove Injection
+                if (IsInjectionSnapped()) {
+                    yield return new WaitWhile(IsInjectionSnapped);
+                    yield return new WaitForSeconds(paddingTime);
+                }
                 break;
 
-            case 8://Close Valve
-                yield return new WaitWhile(IsValveOpen);
+            case 10://Close Valve
+                if (IsValveOpen()) {
+                    yield return new WaitWhile(IsValveOpen);
+                    yield return new WaitForSeconds(paddingTime);
+                }
                 break;
 
             default:
                 Debug.Log("No more tasks");
                 break;
         }
+        //yield return new WaitForSeconds(2f);
         setTaskIndex(currentTaskIndex + 1);
         yield return new WaitForEndOfFrame();
 
@@ -99,15 +172,22 @@ public class FlowController : MonoBehaviour {
     private void PlayVideo(VideoClip clip) {
         StartCoroutine(PlayDemoVideo(clip));
     }
-
-    IEnumerator PlayDemoVideo(VideoClip clip) {
+    private void ToggleAllEquipmentIntrodutions(bool enable) {
+        foreach (GameObject obj in allEquipmentIntroductions) {
+            obj.SetActive(enable);
+        }
+    }
+    void StopVideo() {
         if (videoPlayer.isPlaying || videoPlayer.isPaused) {
             videoPlayer.Stop();
         }
+    }
+    IEnumerator PlayDemoVideo(VideoClip clip) {
+        StopVideo();
         yield return new WaitForEndOfFrame();
         videoPlayer.clip = clip;
         videoPlayer.Prepare();
-        yield return new WaitUntil(()=>videoPlayer.isPrepared);
+        yield return new WaitUntil(() => videoPlayer.isPrepared);
         videoPlayer.Play();
     }
 
@@ -159,12 +239,13 @@ public class FlowController : MonoBehaviour {
             currentTaskIndex = index;
             Debug.Log("Current Task changed to : " + currentTaskIndex);
             // set task instruction and other data here
-            instructionText.text = (currentTaskIndex + 1) + ". " + tasks[currentTaskIndex].instruction;
+            instructionText.text = ((currentTaskIndex - 1 > 0) ? (currentTaskIndex - 1) + ". " : "") + tasks[currentTaskIndex].instruction;
             currentTaskCoroutine = StartCoroutine(CheckCurrentTask());
         } else {
             //RemoveAllHighlights();
             //StopAllCoroutines();
-            ShowRestart("Training Completed! Would you like to try again ?");
+            PlayVoiceOverInstruction(trainingCompleteAudioClip);
+            ShowRestart(TrainingCompleteMessage);
             //instructionText.text = "Training Completed";
             //videoPlayer.Stop();
             Debug.Log("Complete");
@@ -172,8 +253,8 @@ public class FlowController : MonoBehaviour {
     }
 
     private IEnumerator HandleFailCasesForInjection() {
-        int taskIndex = 0;
-        int endIndex = 5;
+        int taskIndex = 2;
+        int endIndex = 7;
 
         if (currentTaskIndex > taskIndex && currentTaskIndex <= endIndex) {
             yield return new WaitUntil(IsInjectionEmpty);
@@ -200,7 +281,10 @@ public class FlowController : MonoBehaviour {
         }
     }
 
-    private void ShowRestart(string message = "Invalid Move! This can be critical to the patient!!\nRestart Training.") {
+    private void ShowRestart(string message = InvalidMoveMessage) {
+        if (message == InvalidMoveMessage) {
+            PlayVoiceOverInstruction(invalidMoveAudioClip);
+        }
         StopAllCoroutines();
         RemoveAllHighlights();
         instructionText.text = message;
@@ -236,6 +320,20 @@ public class FlowController : MonoBehaviour {
         }
     }
 
+    private void StopVoiceOverInstruction() {
+        if (instructionAudioSource.isPlaying) {
+            instructionAudioSource.Stop();
+        }
+    }
+    private void PlayVoiceOverInstruction(AudioClip audio) {
+        StopVoiceOverInstruction();
+        instructionAudioSource.clip = audio;
+        instructionAudioSource.Play();
+    }
+
+    private bool IsAudioPlaying() {
+        return instructionAudioSource.isPlaying;
+    }
 }
 
 [Serializable]
@@ -246,6 +344,7 @@ public class Task {
     public string instruction;
     public List<string> highlightObjectKeys;
     public VideoClip demoVideoClip;
+    public AudioClip instructionAudioClip;
 
     public Task() {
         taskId = ++lastTaskId;

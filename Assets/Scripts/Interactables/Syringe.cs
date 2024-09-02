@@ -24,8 +24,14 @@ public class Syringe : InteractableObjectBase {
         waterFillAmount = waterAmount;
     }
 
-    internal bool IsNozzleDipInsideWaterCup() {
+    internal bool IsNozzleDipValid() {
         return _syringeNozzle.IsDeepedInotWater();
     }
-    
+    internal bool IsNozzleDipInsideWaterCup() {
+        return _syringeNozzle.IsFillEnabled();
+    }
+    internal bool IsNozzleDipInsidePEGTube() {
+        return _syringeNozzle.IsInjectEnabled();
+    }
+        
 }//Syringe class end.

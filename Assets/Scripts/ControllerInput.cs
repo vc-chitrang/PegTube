@@ -6,7 +6,7 @@ public class ControllerInput : MonoBehaviour {
     public Syringe Syringe;
     
     private void Update() {
-        if (!Syringe.IsNozzleDipInsideWaterCup()) {
+        if (!Syringe.IsNozzleDipValid()) {
             return;
         }
 
