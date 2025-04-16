@@ -78,6 +78,7 @@ public class FlowController : MonoBehaviour {
         switch (currentTaskIndex) {
             case 0://welcome
                 if (!WelcomePlayed) {
+                    yield return new WaitForSeconds(paddingTime);
                     yield return new WaitWhile(IsAudioPlaying);// wait whlie audio playing
                     yield return new WaitForSeconds(welcomePeddingTime);
                     yield return new WaitForSeconds(paddingTime);
